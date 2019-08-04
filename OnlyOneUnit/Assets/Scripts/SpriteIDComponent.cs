@@ -18,6 +18,7 @@ public class SpriteIDComponent : MonoBehaviour
 
 	public void SetSpriteArt(int newId)
 	{
+		id = newId;
 		spriteRenderer.sprite = SpriteID.spriteIdInstance.GetRandomSprite(newId);
 	}
 }

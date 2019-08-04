@@ -24,6 +24,7 @@ public class ColorId : MonoBehaviour
 
 	public void SetSpriteColor(int newId)
 	{
+		id = newId;
 		sprite.color = ColorIdComponent.GetColor(newId);
 	}
 }
