@@ -22,17 +22,18 @@ public class PlayerControllerComponent : MonoBehaviour
 			if (playerColorId.ColorIdValue == collision.gameObject.GetComponent<ColorIdComponent>().ColorIdValue)
 			{
 				playerSpriteId.SetSpriteArt(collision.gameObject.GetComponent<SpriteIDComponent>().SpriteIdValue);
-				GameManager.instance.DecreaseNumberOfActiveShapes();
+				GameManager.instance.DecreaseNumberOfActiveShapes(collision.gameObject.GetComponent<SpriteIDComponent>(), collision.gameObject.GetComponent<ColorIdComponent>());
 				Destroy(collision.gameObject);
 			}
 			else if (playerSpriteId.SpriteIdValue == collision.gameObject.GetComponent<SpriteIDComponent>().SpriteIdValue)
 			{
 				playerColorId.SetSpriteColor(collision.gameObject.GetComponent<ColorIdComponent>().ColorIdValue);
-				GameManager.instance.DecreaseNumberOfActiveShapes();
+				GameManager.instance.DecreaseNumberOfActiveShapes(collision.gameObject.GetComponent<SpriteIDComponent>(), collision.gameObject.GetComponent<ColorIdComponent>());
 				Destroy(collision.gameObject);
 			}
 			else
 			{
+				//TODO increase barspeed
 
 			}
 		}
