@@ -4,12 +4,21 @@ using UnityEngine;
 
 public class PlayerControllerComponent : MonoBehaviour
 {
-
-
 	void Update()
     {
 		var mouseLocation = Input.mousePosition;
 		mouseLocation.z = 10f;
 		gameObject.transform.position = Camera.main.ScreenToWorldPoint(mouseLocation);
+	}
+
+	public void OnCollisionEnter2D(Collision2D collision)
+	{
+		if (collision.collider.tag == "collectible")
+		{
+			//TODO Check ColorId
+			//TODO Check ShapeId
+			Destroy(collision.gameObject);
+		}
+
 	}
 }
