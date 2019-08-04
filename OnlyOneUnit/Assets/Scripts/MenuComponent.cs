@@ -8,20 +8,9 @@ using DG.Tweening;
 
 public class MenuComponent : MonoBehaviour
 {
-	[SerializeField]
-	private CanvasGroup gameOverCanvasGroup;
 
 	[SerializeField]
 	private GameObject startScreen;
-
-	[SerializeField]
-	private TextMeshProUGUI message;
-
-	private void Start()
-	{
-		gameOverCanvasGroup.DOFade(0f, 0f);
-		gameOverCanvasGroup.DOFade(1f, 1f);
-	}
 
 	public void StartGame()
 	{

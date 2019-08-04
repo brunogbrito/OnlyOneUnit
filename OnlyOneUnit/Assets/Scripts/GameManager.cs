@@ -54,18 +54,16 @@ public class GameManager : MonoBehaviour
 
 	private bool isPossibleMatch;
 
+	private int playerScore;
+
 	public int NumberOfShapesActive { get { return numberOfShapesActive; } private set { } }
 
+	public int PlayerScore { get { return playerScore; } private set { } }
 
 	void Awake()
 	{
 		instance = this;
 		Initialize();
-	}
-
-    void Start()
-    {
-
 	}
 
 	private void Update()
@@ -242,7 +240,13 @@ public class GameManager : MonoBehaviour
 		numberOfShapesActive--;
 		activeShapesColorIDList.Remove(color);
 		activeShapesSpriteIDList.Remove(sprite);
+		AddScore();
 		CheckMatchPossibilities();
+	}
+
+	private void AddScore()
+	{
+		playerScore = playerScore + 10;
 	}
 
 	public void GameOver()
