@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class ColorId : MonoBehaviour
 {
@@ -6,6 +7,9 @@ public class ColorId : MonoBehaviour
 
 	[SerializeField]
 	private SpriteRenderer sprite;
+
+	[SerializeField]
+	private Image image;
 
 	[SerializeField]
 	private bool isCollectable;
@@ -25,6 +29,14 @@ public class ColorId : MonoBehaviour
 	public void SetSpriteColor(int newId)
 	{
 		id = newId;
-		sprite.color = ColorIdComponent.GetColor(newId);
+		if (sprite != null)
+		{
+			sprite.color = ColorIdComponent.GetColor(newId);
+		}
+		else
+		{
+			image.color = ColorIdComponent.GetColor(newId);
+		}
+
 	}
 }
