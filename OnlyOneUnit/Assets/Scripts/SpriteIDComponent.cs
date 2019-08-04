@@ -9,6 +9,8 @@ public class SpriteIDComponent : MonoBehaviour
 
 	private int id;
 
+	private PolygonCollider2D polygonCollider;
+
 	private void Start()
 	{
 		id = SpriteID.spriteIdInstance.GetRandomID();
@@ -20,5 +22,15 @@ public class SpriteIDComponent : MonoBehaviour
 	{
 		id = newId;
 		spriteRenderer.sprite = SpriteID.spriteIdInstance.GetRandomSprite(newId);
+
+		if (polygonCollider == null)
+		{
+			polygonCollider = gameObject.AddComponent<PolygonCollider2D>();
+		}
+		else
+		{
+			Destroy(polygonCollider);
+			polygonCollider = gameObject.AddComponent<PolygonCollider2D>();
+		}
 	}
 }
