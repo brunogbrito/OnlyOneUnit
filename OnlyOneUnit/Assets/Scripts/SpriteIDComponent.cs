@@ -13,15 +13,21 @@ public class SpriteIDComponent : MonoBehaviour
 
 	private void Start()
 	{
-		id = SpriteID.spriteIdInstance.GetRandomID();
-
+		if (GameManager.instance.NumberOfShapesActive > 4)
+		{
+			id = SpriteID.spriteIdInstance.GetRandomID();
+		}
+		else
+		{
+			id = GameManager.instance.NumberOfShapesActive;
+		}
 		SetSpriteArt(id);
 	}
 
 	public void SetSpriteArt(int newId)
 	{
 		id = newId;
-		spriteRenderer.sprite = SpriteID.spriteIdInstance.GetRandomSprite(newId);
+		spriteRenderer.sprite = SpriteID.spriteIdInstance.GetSprite(newId);
 
 		if (polygonCollider == null)
 		{

@@ -22,19 +22,19 @@ public class PlayerControllerComponent : MonoBehaviour
 			if (playerColorId.ColorIdValue == collision.gameObject.GetComponent<ColorIdComponent>().ColorIdValue)
 			{
 				playerSpriteId.SetSpriteArt(collision.gameObject.GetComponent<SpriteIDComponent>().SpriteIdValue);
+				GameManager.instance.DecreaseNumberOfActiveShapes();
 				Destroy(collision.gameObject);
 			}
 			else if (playerSpriteId.SpriteIdValue == collision.gameObject.GetComponent<SpriteIDComponent>().SpriteIdValue)
 			{
 				playerColorId.SetSpriteColor(collision.gameObject.GetComponent<ColorIdComponent>().ColorIdValue);
+				GameManager.instance.DecreaseNumberOfActiveShapes();
 				Destroy(collision.gameObject);
 			}
 			else
 			{
-				Debug.Log("Game Over");
+
 			}
-
 		}
-
 	}
 }

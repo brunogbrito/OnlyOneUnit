@@ -30,7 +30,7 @@ public class SpriteID : MonoBehaviour
 		return randomIndex;
 	}
 
-	public Sprite GetRandomSprite(int index)
+	public Sprite GetSprite(int index)
 	{
 		var selectedSprite = currentSpriteId.shapes[index];
 		return selectedSprite;
