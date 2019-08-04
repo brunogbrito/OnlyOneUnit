@@ -34,6 +34,9 @@ public class GameManager : MonoBehaviour
 	[SerializeField]
 	private GameObject shapesPrefab;
 
+	[SerializeField]
+	private ColorIdComponent bg;
+
 
 	public static GameManager instance;
 
@@ -62,7 +65,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-		StartGame();
+
 	}
 
 	private void Update()
@@ -73,7 +76,6 @@ public class GameManager : MonoBehaviour
 			if (numberOfShapesActive > 0)
 			{
 				StartCountdown();
-				Debug.Log("1");
 			}
 			if (numberOfShapesActive == 0)
 			{
@@ -110,19 +112,26 @@ public class GameManager : MonoBehaviour
 		isPossibleMatch = true;
 		//startScreen.SetActive(true);
 	}
-	private void StartGame()
+	public void StartGame()
 	{
-		//colorIdComponent.SetColorIdList();
-		//spriteIdComponent.SetSpriteIdList();
-		timeLeft = levelDurationCountdown;
-		Cursor.visible = false;
 		ClearBoard();
+		numberOfShapesActive = 0;
+		timeLeft = levelDurationCountdown;
+		activeShapesColorIDList = new List<ColorIdComponent>();
+		activeShapesSpriteIDList = new List<SpriteIDComponent>();
+		Cursor.visible = false;
+		isPossibleMatch = true;
 		currentLevel++;
 		InstantiatePrefab(currentLevel);
 	}
 
 	private void NextLevel()
 	{
+		colorIdComponent.SetColorIdList();
+		spriteIdComponent.SetSpriteIdList();
+		bg.SetRandomID();
+		playerColorIDComponent.SetRandomID();
+		//Debug.Log("here");
 		StartGame();
 	}
 
@@ -238,9 +247,8 @@ public class GameManager : MonoBehaviour
 
 	public void GameOver()
 	{
-		ClearBoard();
-		Initialize();
-		StartGame();
+		Cursor.visible = true;
+		gameOverScreen.SetActive(true);
 	}
 
 }

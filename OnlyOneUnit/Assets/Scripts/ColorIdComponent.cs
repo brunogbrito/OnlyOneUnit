@@ -26,6 +26,10 @@ public class ColorIdComponent : MonoBehaviour
 		SetSpriteColor(id);
 	}
 
+	public void SetRandomID()
+	{
+		Start();
+	}
 	public void SetSpriteColor(int newId)
 	{
 		id = newId;
