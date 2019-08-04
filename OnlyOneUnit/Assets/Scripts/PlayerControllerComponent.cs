@@ -1,9 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerControllerComponent : MonoBehaviour
 {
+	[SerializeField]
+	private ColorId playerColorId;
+
+	[SerializeField]
+	private SpriteIDComponent playerSpriteId;
+
 	void Update()
     {
 		var mouseLocation = Input.mousePosition;
@@ -15,9 +19,21 @@ public class PlayerControllerComponent : MonoBehaviour
 	{
 		if (collision.collider.tag == "collectible")
 		{
-			//TODO Check ColorId
-			//TODO Check ShapeId
-			Destroy(collision.gameObject);
+			if (playerColorId.ColorIdValue == collision.gameObject.GetComponent<ColorId>().ColorIdValue)
+			{
+				playerSpriteId.SetSpriteArt(collision.gameObject.GetComponent<SpriteIDComponent>().SpriteIdValue);
+				Destroy(collision.gameObject);
+			}
+			else if (playerSpriteId.SpriteIdValue == collision.gameObject.GetComponent<SpriteIDComponent>().SpriteIdValue)
+			{
+				playerColorId.SetSpriteColor(collision.gameObject.GetComponent<ColorId>().ColorIdValue);
+				Destroy(collision.gameObject);
+			}
+			else
+			{
+				Debug.Log("Game Over");
+			}
+
 		}
 
 	}

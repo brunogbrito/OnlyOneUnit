@@ -2,6 +2,8 @@
 
 public class ColorId : MonoBehaviour
 {
+	public int ColorIdValue	{ get {	return id;}	private set { } }
+
 	[SerializeField]
 	private SpriteRenderer sprite;
 
@@ -17,7 +19,11 @@ public class ColorId : MonoBehaviour
 		{
 			id = Random.Range(1, 4);
 		}
+		SetSpriteColor(id);
+	}
 
-		sprite.color = ColorIdComponent.GetColor(id);
+	public void SetSpriteColor(int newId)
+	{
+		sprite.color = ColorIdComponent.GetColor(newId);
 	}
 }
