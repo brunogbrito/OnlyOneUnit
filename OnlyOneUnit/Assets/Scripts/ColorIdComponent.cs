@@ -52,10 +52,5 @@ public class ColorIdComponent : MonoBehaviour
 		{
 			sprite.color = ColorId.GetColor(newId);
 		}
-		else
-		{
-			image.color = ColorId.GetColor(newId);
-		}
-
 	}
 }
