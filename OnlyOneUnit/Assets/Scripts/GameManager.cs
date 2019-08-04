@@ -1,14 +1,26 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+	[Header("IDs")]
 	[SerializeField]
-	private ColorIdComponent colorIdComponent;
+	private ColorId colorIdComponent;
+
+	[SerializeField]
+	private SpriteID spriteIdComponent;
+
+	[Header("UI")]
+	[SerializeField]
+	private GameObject startScreen;
+
+	[SerializeField]
+	private GameObject gameOverScreen;
+
+	public static GameManager instance;
 
 	void Awake()
 	{
+		instance = this;
 		Initialize();
 	}
 
@@ -24,6 +36,11 @@ public class GameManager : MonoBehaviour
 	private void StartGame()
 	{
 		Cursor.visible = false;
+	}
+
+	public void GameOver()
+	{
+
 	}
 
 }

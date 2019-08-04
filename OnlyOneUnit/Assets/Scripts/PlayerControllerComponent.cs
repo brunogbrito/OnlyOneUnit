@@ -3,7 +3,7 @@
 public class PlayerControllerComponent : MonoBehaviour
 {
 	[SerializeField]
-	private ColorId playerColorId;
+	private ColorIdComponent playerColorId;
 
 	[SerializeField]
 	private SpriteIDComponent playerSpriteId;
@@ -19,14 +19,14 @@ public class PlayerControllerComponent : MonoBehaviour
 	{
 		if (collision.collider.tag == "collectible")
 		{
-			if (playerColorId.ColorIdValue == collision.gameObject.GetComponent<ColorId>().ColorIdValue)
+			if (playerColorId.ColorIdValue == collision.gameObject.GetComponent<ColorIdComponent>().ColorIdValue)
 			{
 				playerSpriteId.SetSpriteArt(collision.gameObject.GetComponent<SpriteIDComponent>().SpriteIdValue);
 				Destroy(collision.gameObject);
 			}
 			else if (playerSpriteId.SpriteIdValue == collision.gameObject.GetComponent<SpriteIDComponent>().SpriteIdValue)
 			{
-				playerColorId.SetSpriteColor(collision.gameObject.GetComponent<ColorId>().ColorIdValue);
+				playerColorId.SetSpriteColor(collision.gameObject.GetComponent<ColorIdComponent>().ColorIdValue);
 				Destroy(collision.gameObject);
 			}
 			else

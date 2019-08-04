@@ -1,25 +1,42 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class ColorIdComponent : MonoBehaviour
 {
+	public int ColorIdValue	{ get {	return id;}	private set { } }
+
 	[SerializeField]
-	private List<ColorIDType> colorIds;
+	private SpriteRenderer sprite;
 
-	private int listIdIndex;
+	[SerializeField]
+	private Image image;
 
-	private static ColorIDType currentColorId;
+	[SerializeField]
+	private bool isCollectable;
 
-	public void SetColorIdList()
+	[SerializeField]
+	private int id;
+
+	private void Start()
 	{
-		listIdIndex = Random.Range(0, colorIds.Count);
-		currentColorId = colorIds[listIdIndex];
+		if (isCollectable)
+		{
+			id = Random.Range(1, 4);
+		}
+		SetSpriteColor(id);
 	}
 
-	public static Color GetColor(int id)
+	public void SetSpriteColor(int newId)
 	{
-		var selectedColor = currentColorId.colors[id];
-		return selectedColor;
-	}
+		id = newId;
+		if (sprite != null)
+		{
+			sprite.color = ColorId.GetColor(newId);
+		}
+		else
+		{
+			image.color = ColorId.GetColor(newId);
+		}
 
+	}
 }
