@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19df0fc6da39e494284586ab8626a5be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerColorId: {fileID: 1538854753}
+  playerColorId: {fileID: 0}
   playerSpriteId: {fileID: 5465406059304102028}
 --- !u!114 &1538854753
 MonoBehaviour:
@@ -111,6 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 7453623892641313985}
+  image: {fileID: 0}
   isCollectable: 0
   id: 1
 --- !u!50 &1538854755

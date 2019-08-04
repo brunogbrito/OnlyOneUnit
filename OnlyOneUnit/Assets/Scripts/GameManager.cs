@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
 	private void Initialize()
 	{
 		colorIdComponent.SetColorIdList();
+		spriteIdComponent.SetSpriteIdList();
 	}
 	private void StartGame()
 	{
