@@ -4,7 +4,11 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
 
-	[Header("IDs")]
+    [Header("Developer")]
+    [SerializeField]
+    private bool devMode = false;
+
+    [Header("IDs")]
 	[SerializeField]
 	private ColorId colorIdComponent;
 
@@ -55,6 +59,8 @@ public class GameManager : MonoBehaviour
 	private bool isPossibleMatch;
 
 	private int playerScore;
+
+
 
 	public int NumberOfShapesActive { get { return numberOfShapesActive; } private set { } }
 
@@ -247,6 +253,11 @@ public class GameManager : MonoBehaviour
 	private void AddScore()
 	{
 		playerScore = playerScore + 10;
+
+        if (devMode)
+        {
+            Debug.Log("Current player score" + playerScore);
+        }
 	}
 
 	public void GameOver()
